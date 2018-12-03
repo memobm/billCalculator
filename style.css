@@ -16,6 +16,7 @@ body {
 	padding: 30px;
 	width: 380px;
 	border-radius: 1em;
+	box-shadow: -10px 10px 5px #264653;
 	background: #F2A541;
 	position: relative;
 }
@@ -26,8 +27,8 @@ body {
 	background: #264653;
 	border-radius: .5em;
 	position: absolute;
-	top: -30px;
-	left: 0 auto;
+	top: -34px;
+	left: 65px;
 }
 
 h1 {
@@ -79,19 +80,15 @@ input[type=submit] {
 }
 
 .result {
-	margin-top: 20px;
+	margin-top: 10px;
 }
 
 .result p {
 	font-weight: bold;
 	font-size: 20px;
+	padding: 5px;
 }
 
 .red-glow {
 	color: #CC2936;
 }
-
-.green-glow {
-	color: #08A045;
-}
-
