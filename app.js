@@ -6,6 +6,10 @@ const alertMsg = document.getElementById('tipResult');
 const billMsg = document.getElementById('billFinal');
 const billSplitMsg = document.getElementById('billSplitTotal');
 
+function roundNum(num) {
+	return Math.round(num * 100) / 100; // Rounding values to 2 decimals. 
+}
+
 function billAmount() {
 	const bill = billInput.value;
 	const tip = tipOptions.value;
@@ -15,8 +19,14 @@ function billAmount() {
 	const billTotal = parseFloat(bill) + parseFloat(result);
 	const billSplitTotal = billTotal / parseFloat(billSplit);
 
+	// Validation arguments
+
 	if(bill == '' || tip == '' || billSplit == '') {
 		alertMsg.innerHTML = 'Enter all fields';
+		billMsg.innerHTML = '';
+		billSplitMsg.innerHTML = '';
+		alertMsg.classList.add('red-glow');
+		setTimeout(() => alertMsg.classList.remove('red-glow'), 300);
 
 	} else if (bill <= 0 || bill == '') {
 		alertMsg.innerHTML = 'Enter a correct bill amount';
@@ -40,11 +50,13 @@ function billAmount() {
 		setTimeout(() => alertMsg.classList.remove('red-glow'), 300);
 
 	} else {
-		alertMsg.innerHTML = `You should tip: $ ${result}`;
-		billMsg.innerHTML = `Final bill is $ ${billTotal}`;
-		billSplitMsg.innerHTML = `Final bill per person: $ ${billSplitTotal}`;
+		alertMsg.innerHTML = `You should tip: $${roundNum(result)}`;
+		billMsg.innerHTML = `Final bill: $${roundNum(billTotal)}`;
+		billSplitMsg.innerHTML = `Final bill per person: $${roundNum(billSplitTotal)}`;
 	}
 }
+
+// Adding event listener
 
 function main() {
 	calcResult.addEventListener('click', billAmount);
